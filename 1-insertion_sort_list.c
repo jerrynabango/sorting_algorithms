@@ -9,18 +9,16 @@
   */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *next, *i, *j, *h;
-
-	i = *list;
-	j = (*list)->next;
+	listint_t *next, *i = *list, *j = (*list)->next, *h;
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
-	for (; j; j = next)
+
+	for ( ; j; j = next)
 	{
 		h = j->prev;
 		next = j->next;
-		for (; h && j->n < h->n; h = j->prev)
+		while (h && j->n < h->n)
 		{
 			h->next = j->next;
 			if (j->next)
@@ -38,8 +36,9 @@ void insertion_sort_list(listint_t **list)
 				i = j;
 			}
 			h->prev = j;
+			h = j->prev;
+			print_list(i);
 		}
-		print_list(i);
 	}
 	*list = i;
 }
