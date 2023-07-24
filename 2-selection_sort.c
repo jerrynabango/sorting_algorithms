@@ -1,15 +1,15 @@
 #include "sort.h"
 
 /**
- * selection_sort - sorts an array of integers in asc using Selection sort
- *
- * @array: Indicates pointer to an array of integers
- *
- * @size: Indictes the size of the array in ascending order of the elements
- *
- * Return: Nothing
-*/
-void selection_sort(int *array, size_t size)
+ * locate_min - Locatin the min From Current index in the array
+ * @array: The Array to be Searched
+ * @index: Starting Index of The Search
+ * @size: The Size of The Array
+ * Return: (int) index of min if found or
+ * same given index if index is the min
+ */
+
+int locate_min(int *array, int index, size_t size)
 {
 	int min, idx_min;
 	int i;
