@@ -11,22 +11,17 @@
 */
 void selection_sort(int *array, size_t size)
 {
-	size_t i, j, h;
 	int n;
+	size_t i, j, h;
 
 	for (j = 0; j < size - 1; j++)
 	{
 		h = j;
-		i = j + 1;
-		while (i < size)
+		for (i = j + 1; i < size; i++)
 		{
 			if (array[i] < array[h])
-			{
 				h = i;
-			}
-			i++;
 		}
-
 		if (h != j)
 		{
 			n = array[h];
