@@ -11,11 +11,11 @@
  */
 void swap(int *a, int *b)
 {
-	int swap_element;
+	int temp;
 
-	swap_element = *b;
+	temp = *b;
 	*b = *a;
-	*a = swap_element;
+	*a = temp;
 }
 
 /**
