@@ -1,56 +1,44 @@
 #include "sort.h"
-/**
- * swap - swap 2 element in an list
- * @head: head of list
- * @a: node
- * @b: node
- */
-void swap(listint_t *a, listint_t *b, listint_t **head)
-{
-	listint_t *aux1 = NULL, *aux2 = NULL;
 
-	if (a == NULL || b == NULL)
-		return;
-	aux1 = a->prev;
-	aux2 = b->next;
-	/* if nodes are adjacent*/
-	if (aux1)
-		aux1->next = b;
-	if (aux2)
-		aux2->prev = a;
-	a->next = aux2;
-	a->prev = b;
-	b->next = a;
-	b->prev = aux1;
-	if (aux1 == NULL)
-		*head = b;
-}
 /**
- * insertion_sort_list  - insertion_sort_list
- * @list: doubly liked list
- *
- */
+  * insertion_sort_list - sorts array of integers in asc using Bubble sort
+  *
+  * @list: Indicates a pointer to an array of integers in ascending order
+  *
+  * Return: Nothing
+  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *head, *prev;
-	int value;
+	listint_t *next, *i = *list, *j = (*list)->next, *h;
 
-	if (list == NULL || (*list)->next == NULL || (*list) == NULL)
-	{
+	if (list == NULL || (*list) == NULL || (*list)->next == NULL)
 		return;
-	}
-	head = *list;
-	while (head)
-	{
-		prev = head->prev;
-				value = head->n;
 
-		while (prev && prev->n > value)
+	for ( ; j; j = next)
+	{
+		h = j->prev;
+		next = j->next;
+		while (h && j->n < h->n)
 		{
-			swap(prev, head, list);
-			print_list(*list);
-			prev = head->prev;
+			h->next = j->next;
+			if (j->next)
+			{
+				j->next->prev = h;
+			}
+			j->next = h;
+			j->prev = h->prev;
+			if (h->prev)
+			{
+				h->prev->next = j;
+			}
+			else
+			{
+				i = j;
+			}
+			h->prev = j;
+			h = j->prev;
+			print_list(i);
 		}
-		head = head->next;
 	}
+	*list = i;
 }
