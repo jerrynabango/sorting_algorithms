@@ -12,26 +12,27 @@
 void selection_sort(int *array, size_t size)
 {
 	size_t i, j, h;
-    int n;
+	int n;
 
-    for (j = 0; j < size - 1; j++)
-    {
-        h = j;
+	for (j = 0; j < size - 1; j++)
+	{
+		h = j;
+		i = j + 1;
+		while (i < size)
+		{
+			if (array[i] < array[h])
+			{
+				h = i;
+			}
+			i++;
+		}
 
-        for (i = j + 1; i < size; i++)
-        {
-            if (array[i] < array[h])
-            {
-                h = i;
-            }
-        }
-
-        if (h != j)
-        {
-            n = array[h];
-            array[h] = array[j];
-            array[j] = n;
-            print_array(array, size);
-        }
-    }
+		if (h != j)
+		{
+			n = array[h];
+			array[h] = array[j];
+			array[j] = n;
+			print_array(array, size);
+		}
+	}
 }
