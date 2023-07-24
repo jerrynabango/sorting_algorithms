@@ -11,11 +11,11 @@
  */
 void swap(int *a, int *b)
 {
-	int temp;
+	int swap_element;
 
-	temp = *b;
+	swap_element = *b;
 	*b = *a;
-	*a = temp;
+	*a = swap_element;
 }
 
 /**
@@ -29,17 +29,21 @@ void swap(int *a, int *b)
  */
 void shell_sort(int *array, size_t size)
 {
-	size_t sort_1, sort_2, sort_3;
+	size_t sort_1 = 1, sort_2, sort_3;
 
 	if (array == NULL || size < 2)
 		return;
 
-	for (sort_1 = 1; sort_1 < (size / 3);)
-		sort_1 = sort_1 * 3 + 1;
-
-	for (; sort_1 >= 1; sort_1 /= 3)
+	while (sort_1 < (size / 3))
 	{
-		for (sort_2 = sort_1; sort_2 < size; sort_2++)
+		sort_1 = sort_1 * 3 + 1;
+	}
+
+	while (sort_1 >= 1)
+	{
+		sort_2 = sort_1;
+
+		while (sort_2 < size)
 		{
 			sort_3 = sort_2;
 			while (sort_3 >= sort_1 && array[sort_3 - sort_1] > array[sort_3])
@@ -47,7 +51,11 @@ void shell_sort(int *array, size_t size)
 				swap(array + sort_3, array + (sort_3 - sort_1));
 				sort_3 -= sort_1;
 			}
+
+			sort_2++;
 		}
+
+		sort_1 /= 3;
 		print_array(array, size);
 	}
 }
