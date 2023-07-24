@@ -11,27 +11,44 @@
 */
 void selection_sort(int *array, size_t size)
 {
-	size_t i, j, h;
-	int n;
+	int min, idx_min;
+	int i;
 
-	for (j = 0; j < size - 1; j++)
+	min = array[index];
+	idx_min = index;
+	for (i = index; i < (int)size; i++)
 	{
-		h = j;
-		i = j + 1;
-		while (i < size)
+		if (array[i] < min)
 		{
-			if (array[i] < array[h])
-			{
-				h = i;
-			}
-			i++;
+			min = array[i];
+			idx_min = i;
 		}
+	}
+	if (idx_min == index)
+		return (-1);
+	return (idx_min);
+}
 
-		if (h != j)
+/**
+ * selection_sort - Implementation of selection Sort Algrithme
+ * @array: Array to sort type int *
+ * @size: The Size of The Given Array
+ *
+ * Return: (Void) Sorted Array
+ */
+void selection_sort(int *array, size_t size)
+{
+	int i;
+	int min, tmp;
+
+	for (i = 0; i < (int)size; i++)
+	{
+		min = locate_min(array, i, size);
+		if (min != -1)
 		{
-			n = array[h];
-			array[h] = array[j];
-			array[j] = n;
+			tmp = array[i];
+			array[i] = array[min];
+			array[min] = tmp;
 			print_array(array, size);
 		}
 	}
