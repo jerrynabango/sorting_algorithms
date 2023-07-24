@@ -45,41 +45,40 @@ void swap(listint_t **list, listint_t *previous, listint_t *next)
   */
 void cocktail_sort_list(listint_t **list)
 {
-	bool swapped;
-	listint_t *next, *current;
+	listint_t *next, *i;
+	bool cock_sort = true;
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
+	cock_sort = true;
 
-	swapped = true;
-
-	while (swapped)
+	for (; cock_sort; )
 	{
-		swapped = false;
-		current = *list;
-		for ( ; current->next; current = next)
+		cock_sort = false;
+		i = *list;
+		for ( ; i->next; i = next)
 		{
-			next = current->next;
-			if (current->n > next->n)
+			next = i->next;
+			if (i->n > next->n)
 			{
-				swap(list, current, next);
+				swap(list, i, next);
 				print_list(*list);
-				swapped = true;
+				cock_sort = true;
 			}
 		}
-		if (!swapped)
+		if (!cock_sort)
 			break;
-		swapped = false;
+		cock_sort = false;
 
-		for ( ; current->prev; current = current->prev)
+		for ( ; i->prev; i = i->prev)
 		{
-			next = current->prev;
-			if (current->n < next->n)
+			next = i->prev;
+			if (i->n < next->n)
 			{
-				swap(list, next, current);
+				swap(list, next, i);
 				print_list(*list);
-				current = current->next;
-				swapped = true;
+				i = i->next;
+				cock_sort = true;
 			}
 		}
 	}
