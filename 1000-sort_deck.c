@@ -17,8 +17,7 @@ void sort_deck(deck_node_t **deck)
 	if (!deck || !*deck || len < 2)
 		return;
 
-	sort = *deck;
-	while (sort)
+	for (sort = *deck; sort; sort = sort->next)
 	{
 		if (sort->prev && card_value(sort) < card_value(sort->prev))
 		{
@@ -44,10 +43,7 @@ void sort_deck(deck_node_t **deck)
 			}
 			j->prev = h;
 			sort = *deck;
-			continue;
 		}
-		else
-			sort = sort->next;
 	}
 }
 
