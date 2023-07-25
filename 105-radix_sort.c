@@ -63,13 +63,13 @@ void radix_sort(int *array, size_t size)
 	{
 		if (array[z] > high)
 			high = array[z];
-	z++;
+		z++;
 	}
 
 	while (high / radix > 0)
 	{
 		_LSD(array, size, radix);
 		print_array(array, size);
-	radix *= 10;
+		radix *= 10;
 	}
 }
