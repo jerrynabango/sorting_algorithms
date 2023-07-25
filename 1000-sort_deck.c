@@ -62,19 +62,25 @@ int card_value(deck_node_t *node)
 {
 	int a, kind_val = 0;
 	char *val[13] = {"Ace", "2", "3", "4", "5", "6",
-		"7", "8", "9", "10", "Jack", "Queen", "King"};
+	"7", "8", "9", "10", "Jack", "Queen", "King"};
 	char *kinds[4] = {"SPADE", "HEART", "CLUB", "DIAMOND"};
 
-	for (a = 1; a <= 13; a++)
+	a = 1;
+	while (a <= 13)
 	{
 		if (!_strcmp(node->card->value, val[a - 1]))
+		{
 			kind_val = a;
+		}
+		a++;
 	}
 
 	for (a = 1; a <= 4; a++)
 	{
 		if (!_strcmp(kinds[node->card->kind], kinds[a - 1]))
+		{
 			kind_val = kind_val + (13 * a);
+		}
 	}
 
 	return (kind_val);
