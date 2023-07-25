@@ -9,8 +9,7 @@
  * @tail: parameter.
  * Return: Nothing
  */
-void _subarr(int *arr, int *temp, size_t head, size_t cen,
-		size_t tail)
+void _subarr(int *arr, int *temp, size_t head, size_t cen, size_t tail)
 {
 	size_t j, k, z = 0;
 
@@ -20,30 +19,30 @@ void _subarr(int *arr, int *temp, size_t head, size_t cen,
 	printf("[right]: ");
 	print_array(arr + cen, tail - cen);
 
-    j = head;
-    k = cen;
+	j = head;
+	k = cen;
 	while (j < cen && k < tail)
-    {
+	{
 		temp[z] = (arr[j] < arr[k]) ? arr[j++] : arr[k++];
-        z++;
-    }
+		z++;
+	}
 	while (j < cen)
-    {
+	{
 		temp[z++] = arr[j];
-        j++;
-    }
+		j++;
+	}
 	while (k < tail)
-    {
+	{
 		temp[z++] = arr[k];
-        k++;
-    }
-    j = head;
-    z = 0;
+		k++;
+	}
+	j = head;
+	z = 0;
 	while (j < tail)
-    {
+	{
 		arr[j] = temp[z++];
-        j++;
-    }
+		j++;
+	}
 
 	printf("[Done]: ");
 	print_array(arr + head, tail - head);
