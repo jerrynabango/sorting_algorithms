@@ -61,7 +61,8 @@ void heap_sort(int *array, size_t size)
 		heapy(array, size, (size_t)sort, size);
 	}
 
-	for (sort = size - 1; sort >= 0; sort--)
+	sort = size - 1;
+	while (sort >= 0)
 	{
 		heap = array[0];
 		array[0] = array[sort];
@@ -73,5 +74,7 @@ void heap_sort(int *array, size_t size)
 		}
 
 		heapy(array, (size_t)sort, 0, size);
+
+		sort--;
 	}
 }
