@@ -53,7 +53,6 @@ void bitonic_merge(int *array, int l, int r, int dir)
 	}
 }
 
-
 /**
  * bitonic_recursion - Function to recurse through array & recurse each element
  *
